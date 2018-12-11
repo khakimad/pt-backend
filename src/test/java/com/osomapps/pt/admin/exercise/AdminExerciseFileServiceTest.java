@@ -23,9 +23,9 @@ public class AdminExerciseFileServiceTest {
 
     @Test
     public void findOne() {
-        when(exerciseFileRepository.findAll(eq(Arrays.asList(1L)))).thenReturn(
+        when(exerciseFileRepository.findAllById(eq(Arrays.asList(1L)))).thenReturn(
                 Arrays.asList(new ExerciseFile()));
         adminExerciseFileService.findAll(Arrays.asList(1L));
-        verify(exerciseFileRepository).findAll(eq(Arrays.asList(1L)));
+        verify(exerciseFileRepository).findAllById(eq(Arrays.asList(1L)));
     }
 }

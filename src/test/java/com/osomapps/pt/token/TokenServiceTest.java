@@ -63,13 +63,13 @@ public class TokenServiceTest {
         tokenRequest.setDevice_id("device_id");
         FacebookResponse facebookResponse = new FacebookResponse();
         facebookResponse.setAge(20L);
-        when(inUserFacebookRepository.findByUserId(anyString())).thenReturn(Arrays.asList(
-                new InUserFacebook().setInUser(new InUser()
-                        .setD_level("1")
-                        .setInUserGoals(Arrays.asList(new InUserGoal().setGoal_value("{\"key\":10}")))
-                        .setInUserFacebooks(new ArrayList<>(Arrays.asList(new InUserFacebook())))
-                        .setInUserLogins(new ArrayList<>(Arrays.asList(new InUserLogin())))
-                )));
+//        when(inUserFacebookRepository.findByUserId(anyString())).thenReturn(Arrays.asList(
+//                new InUserFacebook().setInUser(new InUser()
+//                        .setD_level("1")
+//                        .setInUserGoals(Arrays.asList(new InUserGoal().setGoal_value("{\"key\":10}")))
+//                        .setInUserFacebooks(new ArrayList<>(Arrays.asList(new InUserFacebook())))
+//                        .setInUserLogins(new ArrayList<>(Arrays.asList(new InUserLogin())))
+//                )));
         when(facebookService.getProfileNameAndId(anyString())).thenReturn(Optional.of(facebookResponse));
         when(facebookService.getProfilePictureUrl(anyString())).thenReturn(Optional.empty());
         when(inUserRepository.save(any(InUser.class))).thenReturn(null);
@@ -194,7 +194,7 @@ public class TokenServiceTest {
     @Test(expected = UnauthorizedException.class)
     public void deleteToken_invalid_token() {
         when(inUserLoginRepository.findByToken(anyString())).thenReturn(Arrays.asList(new InUserLogin()));
-        when(inUserLogoutRepository.saveAndFlush(any(InUserLogout.class))).thenReturn(null);
+//        when(inUserLogoutRepository.saveAndFlush(any(InUserLogout.class))).thenReturn(null);
         when(inUserLogoutRepository.findByToken(anyString())).thenReturn(Arrays.asList(new InUserLogout()));
         tokenService.deleteToken("", "");
         verify(inUserLogoutRepository).saveAndFlush(any(InUserLogout.class));

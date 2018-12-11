@@ -30,7 +30,7 @@ public class CustomAuthenticationEntryPointTest {
     @Test
     public void commence_null() throws IOException, ServletException {
         HttpServletResponse httpServletResponse = mock(HttpServletResponse.class);
-        when(httpServletResponse.getWriter()).thenReturn(mock(PrintWriter.class));
+//        when(httpServletResponse.getWriter()).thenReturn(mock(PrintWriter.class));
         new CustomAuthenticationEntryPoint().commence(mock(HttpServletRequest.class),
                 httpServletResponse, null);
         verify(httpServletResponse, never()).setStatus(eq(HttpServletResponse.SC_UNAUTHORIZED));

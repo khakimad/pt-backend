@@ -39,7 +39,7 @@ import java.util.Collections;
 import java.util.List;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Matchers.anyInt;
+import static org.mockito.Matchers.anyObject;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
@@ -70,9 +70,9 @@ public class AdminProgramAssignServiceTest {
 
     @Test
     public void assign_user_group_1_two_goals() {
-        when(inWorkoutItemRepository.save(any(InWorkoutItem.class))).thenAnswer(i -> i.getArguments()[0]);
+//        when(inWorkoutItemRepository.save(any(InWorkoutItem.class))).thenAnswer(i -> i.getArguments()[0]);
         when(parseProgramRepository.findAll(any(Sort.class))).thenReturn(Arrays.asList(getParseProgram()));
-        when(dictionaryService.getEnValue(eq(DictionaryName.goal_title), anyString(), anyString())).thenReturn("Loose weight");
+//        when(dictionaryService.getEnValue(eq(DictionaryName.goal_title), anyString(), anyString())).thenReturn("Loose weight");
         adminProgramAssignService.assign(new InUser().setD_level("2")
                 .setD_sex("male").setInUserGoals(Arrays.asList(new InUserGoal(), new InUserGoal()))
                 .setInPrograms(Arrays.asList(
@@ -90,9 +90,9 @@ public class AdminProgramAssignServiceTest {
 
     @Test
     public void assign_user_unknown_gender() {
-        when(inWorkoutItemRepository.save(any(InWorkoutItem.class))).thenAnswer(i -> i.getArguments()[0]);
+//        when(inWorkoutItemRepository.save(any(InWorkoutItem.class))).thenAnswer(i -> i.getArguments()[0]);
         when(parseProgramRepository.findAll(any(Sort.class))).thenReturn(Arrays.asList(getParseProgram()));
-        when(dictionaryService.getEnValue(eq(DictionaryName.goal_title), anyString(), anyString())).thenReturn("Loose weight");
+//        when(dictionaryService.getEnValue(eq(DictionaryName.goal_title), anyString(), anyString())).thenReturn("Loose weight");
         adminProgramAssignService.assign(new InUser().setD_level("2")
                 .setD_sex("male2").setInUserGoals(Arrays.asList(new InUserGoal())));
         verify(inProgramRepository, never()).save(any(InProgram.class));
@@ -100,9 +100,9 @@ public class AdminProgramAssignServiceTest {
 
     @Test
     public void assign_user_unknown_level() {
-        when(inWorkoutItemRepository.save(any(InWorkoutItem.class))).thenAnswer(i -> i.getArguments()[0]);
+//        when(inWorkoutItemRepository.save(any(InWorkoutItem.class))).thenAnswer(i -> i.getArguments()[0]);
         when(parseProgramRepository.findAll(any(Sort.class))).thenReturn(Arrays.asList(getParseProgram()));
-        when(dictionaryService.getEnValue(eq(DictionaryName.goal_title), anyString(), anyString())).thenReturn("Loose weight");
+//        when(dictionaryService.getEnValue(eq(DictionaryName.goal_title), anyString(), anyString())).thenReturn("Loose weight");
         adminProgramAssignService.assign(new InUser().setD_level("3")
                 .setD_sex("male").setInUserGoals(Arrays.asList(new InUserGoal())));
         verify(inProgramRepository, never()).save(any(InProgram.class));
@@ -110,9 +110,9 @@ public class AdminProgramAssignServiceTest {
 
     @Test
     public void assign_user_unknown_level_and_gender() {
-        when(inWorkoutItemRepository.save(any(InWorkoutItem.class))).thenAnswer(i -> i.getArguments()[0]);
+//        when(inWorkoutItemRepository.save(any(InWorkoutItem.class))).thenAnswer(i -> i.getArguments()[0]);
         when(parseProgramRepository.findAll(any(Sort.class))).thenReturn(Arrays.asList(getParseProgram()));
-        when(dictionaryService.getEnValue(eq(DictionaryName.goal_title), anyString(), anyString())).thenReturn("Loose weight");
+//        when(dictionaryService.getEnValue(eq(DictionaryName.goal_title), anyString(), anyString())).thenReturn("Loose weight");
         adminProgramAssignService.assign(new InUser().setD_level("3")
                 .setD_sex("male2").setInUserGoals(Arrays.asList(new InUserGoal())));
         verify(inProgramRepository, never()).save(any(InProgram.class));
@@ -120,9 +120,9 @@ public class AdminProgramAssignServiceTest {
 
     @Test
     public void assign_user_group_1() {
-        when(inWorkoutItemRepository.save(any(InWorkoutItem.class))).thenAnswer(i -> i.getArguments()[0]);
+//        when(inWorkoutItemRepository.save(any(InWorkoutItem.class))).thenAnswer(i -> i.getArguments()[0]);
         when(parseProgramRepository.findAll(any(Sort.class))).thenReturn(Arrays.asList(getParseProgram()));
-        when(dictionaryService.getEnValue(eq(DictionaryName.goal_title), anyString(), anyString())).thenReturn("Loose weight");
+//        when(dictionaryService.getEnValue(eq(DictionaryName.goal_title), anyString(), anyString())).thenReturn("Loose weight");
         adminProgramAssignService.assign(new InUser().setD_level("2")
                 .setD_sex("male").setInUserGoals(Arrays.asList(new InUserGoal()))
                 .setInPrograms(Arrays.asList(
@@ -134,9 +134,9 @@ public class AdminProgramAssignServiceTest {
 
     @Test
     public void assign_empty_goals() {
-        when(inWorkoutItemRepository.save(any(InWorkoutItem.class))).thenAnswer(i -> i.getArguments()[0]);
+//        when(inWorkoutItemRepository.save(any(InWorkoutItem.class))).thenAnswer(i -> i.getArguments()[0]);
         when(parseProgramRepository.findAll(any(Sort.class))).thenReturn(Arrays.asList(getParseProgram()));
-        when(dictionaryService.getEnValue(eq(DictionaryName.goal_title), anyString(), anyString())).thenReturn("Loose weight");
+//        when(dictionaryService.getEnValue(eq(DictionaryName.goal_title), anyString(), anyString())).thenReturn("Loose weight");
         adminProgramAssignService.assign(new InUser().setD_level("2")
                 .setD_sex("male").setInUserGoals(Collections.emptyList()));
         verify(inProgramRepository, never()).save(any(InProgram.class));
@@ -144,9 +144,9 @@ public class AdminProgramAssignServiceTest {
 
     @Test
     public void assign_user_group_2() {
-        when(inWorkoutItemRepository.save(any(InWorkoutItem.class))).thenAnswer(i -> i.getArguments()[0]);
+//        when(inWorkoutItemRepository.save(any(InWorkoutItem.class))).thenAnswer(i -> i.getArguments()[0]);
         when(parseProgramRepository.findAll(any(Sort.class))).thenReturn(Arrays.asList(getParseProgram()));
-        when(dictionaryService.getEnValue(eq(DictionaryName.goal_title), anyString(), anyString())).thenReturn("Loose weight");
+//        when(dictionaryService.getEnValue(eq(DictionaryName.goal_title), anyString(), anyString())).thenReturn("Loose weight");
         adminProgramAssignService.assign(new InUser().setD_level("1")
                 .setD_sex("male").setInUserGoals(Arrays.asList(new InUserGoal()))
                 .setInPrograms(Arrays.asList(
@@ -159,9 +159,9 @@ public class AdminProgramAssignServiceTest {
 
     @Test
     public void assign_user_group_3() {
-        when(inWorkoutItemRepository.save(any(InWorkoutItem.class))).thenAnswer(i -> i.getArguments()[0]);
+//        when(inWorkoutItemRepository.save(any(InWorkoutItem.class))).thenAnswer(i -> i.getArguments()[0]);
         when(parseProgramRepository.findAll(any(Sort.class))).thenReturn(Arrays.asList(getParseProgram()));
-        when(dictionaryService.getEnValue(eq(DictionaryName.goal_title), anyString(), anyString())).thenReturn("Loose weight");
+//        when(dictionaryService.getEnValue(eq(DictionaryName.goal_title), anyString(), anyString())).thenReturn("Loose weight");
         adminProgramAssignService.assign(new InUser().setD_level("2")
                 .setD_sex("female").setInUserGoals(Arrays.asList(new InUserGoal()))
                 .setInPrograms(Arrays.asList(
@@ -173,9 +173,9 @@ public class AdminProgramAssignServiceTest {
 
     @Test
     public void assign_user_group_4() {
-        when(inWorkoutItemRepository.save(any(InWorkoutItem.class))).thenAnswer(i -> i.getArguments()[0]);
+//        when(inWorkoutItemRepository.save(any(InWorkoutItem.class))).thenAnswer(i -> i.getArguments()[0]);
         when(parseProgramRepository.findAll(any(Sort.class))).thenReturn(Arrays.asList(getParseProgram()));
-        when(dictionaryService.getEnValue(eq(DictionaryName.goal_title), anyString(), anyString())).thenReturn("Loose weight");
+//        when(dictionaryService.getEnValue(eq(DictionaryName.goal_title), anyString(), anyString())).thenReturn("Loose weight");
         adminProgramAssignService.assign(new InUser().setD_level("1")
                 .setD_sex("female").setInUserGoals(Arrays.asList(new InUserGoal()))
                 .setInPrograms(Arrays.asList(
@@ -405,7 +405,7 @@ public class AdminProgramAssignServiceTest {
 
     @Test
     public void getExerciseType_size_1() {
-        when(exerciseRepository.findByExerciseId(anyInt()))
+        when(exerciseRepository.findByExerciseId(anyObject()))
                 .thenReturn(Arrays.asList(new Exercise().setExerciseTypes(
                         Arrays.asList(new ExerciseType().setName("test")))));
         assertThat(adminProgramAssignService.getExerciseType(new ParseWorkoutItem()), equalTo("test"));
@@ -413,7 +413,7 @@ public class AdminProgramAssignServiceTest {
 
     @Test
     public void getExerciseType_size_2() {
-        when(exerciseRepository.findByExerciseId(anyInt()))
+        when(exerciseRepository.findByExerciseId(anyObject()))
                 .thenReturn(Arrays.asList(new Exercise().setExerciseTypes(
                         Arrays.asList(new ExerciseType().setName("test1"), new ExerciseType().setName("test2")))));
         assertThat(adminProgramAssignService.getExerciseType(new ParseWorkoutItem()
@@ -423,7 +423,7 @@ public class AdminProgramAssignServiceTest {
 
     @Test
     public void getExerciseType_size_2_with_null_time() {
-        when(exerciseRepository.findByExerciseId(anyInt()))
+        when(exerciseRepository.findByExerciseId(anyObject()))
                 .thenReturn(Arrays.asList(new Exercise().setExerciseTypes(
                         Arrays.asList(new ExerciseType().setName("test1"), new ExerciseType().setName("test2")))));
         assertThat(adminProgramAssignService.getExerciseType(new ParseWorkoutItem()

@@ -60,6 +60,6 @@ public class DictionaryServiceTest {
                 anyString(), anyString(), anyString(), any(LocalDateTime.class)))
                 .thenReturn(Arrays.asList(new DictionaryData()));
         dictionaryService.deleteDatas(DictionaryName.exercise_name, "1");
-        verify(dictionaryRepository, times(2)).delete(any(Iterable.class));
+        verify(dictionaryRepository, times(2)).deleteAll(any(Iterable.class));
     }
 }

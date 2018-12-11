@@ -55,7 +55,7 @@ public class TokenEmailServiceTest {
                         .setWeight(80F)
                         .setInUserEmails(new ArrayList<>())
                         .setInUserLogins(new ArrayList<>(Arrays.asList(new InUserLogin()))))));
-        when(passwordEncoder.matches(any(CharSequence.class), anyString())).thenReturn(true);
+        when(passwordEncoder.matches(anyObject(), anyObject())).thenReturn(Boolean.TRUE);
         when(inUserLogoutRepository.findByToken(anyString())).thenReturn(Collections.emptyList());
         when(inUserRepository.save(any(InUser.class))).thenAnswer(i -> i.getArguments()[0]);
         TokenEmailResponseDTO tokenEmailResponseDTO =
@@ -74,7 +74,7 @@ public class TokenEmailServiceTest {
                         .setInUserGoals(Arrays.asList(new InUserGoal().setGoal_value("{\"key\":10}")))
                         .setInUserEmails(new ArrayList<>())
                         .setInUserLogins(new ArrayList<>(Arrays.asList(new InUserLogin()))))));
-        when(passwordEncoder.matches(any(CharSequence.class), anyString())).thenReturn(true);
+        when(passwordEncoder.matches(anyObject(), anyObject())).thenReturn(Boolean.TRUE);
         when(inUserLogoutRepository.findByToken(anyString())).thenReturn(Arrays.asList(new InUserLogout()));
         when(inUserRepository.save(any(InUser.class))).thenAnswer(i -> i.getArguments()[0]);
         TokenEmailResponseDTO tokenEmailResponseDTO =
@@ -99,7 +99,7 @@ public class TokenEmailServiceTest {
     public void readOrCreateInUserEmail() {
         when(inUserEmailRepository.findByLogin(eq("email"))).thenReturn(Arrays.asList(new InUserEmail()
             .setInUser(new InUser().setInUserLogins(Arrays.asList(new InUserLogin())))));
-        when(passwordEncoder.matches(anyObject(), anyString())).thenReturn(Boolean.TRUE);
+        when(passwordEncoder.matches(anyObject(), anyObject())).thenReturn(Boolean.TRUE);
         when(inUserLogoutRepository.findByToken(anyString())).thenReturn(Arrays.asList(new InUserLogout()));
         Pair<Boolean, InUserEmail> pair = tokenEmailService.readOrCreateInUserEmail(
                 new TokenEmailRequestDTO().setEmail("email"));
@@ -110,7 +110,7 @@ public class TokenEmailServiceTest {
     public void readOrCreateInUserEmail_empty() {
         when(inUserEmailRepository.findByLogin(eq("email"))).thenReturn(Arrays.asList(new InUserEmail()
             .setInUser(new InUser().setInUserLogins(Arrays.asList(new InUserLogin())))));
-        when(passwordEncoder.matches(anyObject(), anyString())).thenReturn(Boolean.TRUE);
+        when(passwordEncoder.matches(anyObject(), anyObject())).thenReturn(Boolean.TRUE);
         when(inUserLogoutRepository.findByToken(anyString())).thenReturn(Collections.emptyList());
         Pair<Boolean, InUserEmail> pair = tokenEmailService.readOrCreateInUserEmail(
                 new TokenEmailRequestDTO().setEmail("email"));
